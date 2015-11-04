@@ -17,7 +17,18 @@
     ProfessorDAO dao = new ProfessorDAO ();
     dao.incluir(prof);
     
-    
+    String mensagem;
+    try 
+    {
+        dao.incluir(prof);
+        mensagem = "Registro cadastrado com sucesso";
+        
+    }
+    catch
+    {
+        
+                
+    }
     
     
 

@@ -68,20 +68,32 @@ public class ProfessorDAO {
     public void excluir(Professor obj) throws Exception {
         
         EntityManager em = getEm();
-        
         try {
-            
+            em.getTransaction().begin();
+            em.merge(obj);
+            em.remove(obj);
+            em.getTransaction().commit();
         } catch (RuntimeException e) {
-            
+            em.getTransaction().rollback();
         } finally {
-            
+            em.close();
         }
-        
     }
     
     public void fechaEmf() {
-        
         Conexao.closeConexao();
-        
     }
 }
+
+    
+   // public Professor buscarPorChavePrimaria (String siape)
+    //{
+     //   return em.find(Professor class, siape);
+    //}
+    
+    //public void fechaEmf() {
+        
+       //Conexao.closeConexao();
+        
+    //}
+//}
